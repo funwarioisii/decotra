@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "decotra"
+version = "0.0.4-dev"
+description = ""
+authors = ["funwarioisii <mottirioisii@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+boto3 = "^1.10"
+numpy = "^1.17"
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
