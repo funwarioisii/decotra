@@ -16,6 +16,12 @@ In my use case, tracking many results of functions on server and upload to S3(I 
 $ pip install decotra
 ```
 
+and if you use local s3 server (like a minio), please set a environmental parameters `S3_ENDPOINT_URL`.
+
+Example.
+
+`export S3_ENDPOINT_URL=http://s3.foo.co`
+
 ## Simple Usage
 
 ```python
