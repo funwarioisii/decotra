@@ -30,7 +30,8 @@ def __upload_to_s3(
         config=Config(signature_version='s3v4'),
         region_name='us-east-1'
     )
-    s3.Bucket(bucket_prefix).upload_file(f'{saved_prefix}{filename}', f'{upload_to_prefix}{filename}')
+    bucket = s3.Bucket(bucket_prefix)
+    bucket.upload_file(f'{saved_prefix}{filename}', f'{upload_to_prefix}{filename}')
     return
 
 
@@ -39,8 +40,6 @@ def track(bucket_name):
         def runner(*args, **kwargs):
             result = func(*args, **kwargs)
             os.makedirs(decotra.saved_prefix, exist_ok=True)
-
-            print(decotra.saved_prefix)
 
             # saving
             if type(result) is np.ndarray:
@@ -52,14 +51,14 @@ def track(bucket_name):
             filename = func.__name__ + '.npz' if type(result) is np.ndarray else func.__name__ + '.pkl'
 
             # uploading
-            # __upload_to_s3(
-            #     bucket_prefix=bucket_name,
-            #     saved_prefix=decotra.saved_prefix,
-            #     upload_to_prefix=decotra.saved_prefix,
-            #     filename=filename
-            # )
-            #
-            # os.remove(decotra.saved_prefix + filename)
+            __upload_to_s3(
+                bucket_prefix=bucket_name,
+                saved_prefix=decotra.saved_prefix,
+                upload_to_prefix=decotra.saved_prefix,
+                filename=filename
+            )
+
+            os.remove(decotra.saved_prefix + filename)
 
             return result
         return runner
