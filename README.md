@@ -2,9 +2,9 @@
 
 Save a intermediate product and upload to S3.
 
-Decotra's main feature is concreted with decorator, so it is easy to code and to remove.
+`Decotra`'s main feature is concreted with decorator, so it is easy to code and to remove.
 
-In my use case, tracking many results of functions on server and upload to S3(I use minio), analyzing the calculation process ad hoc.
+In my use case, tracking many results of functions on server and upload to S3 (I use minio), analyzing the calculation process ad-hoc.
 
 ## Requirements
 
@@ -73,3 +73,11 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+
+## tips
+### Q. In debugging, i don't want to upload files and to change own codes. 
+__A.__ Set `USE_DECOTRA=-1`.
+
+Before upload files, `decotra` checks environment parameter `USE_DECOTRA`.
+
+You do `export USE_DECOTRA=-1`, you can skip uploading process.

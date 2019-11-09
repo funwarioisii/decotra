@@ -39,6 +39,10 @@ def track(bucket_name):
     def _save_and_upload(func):
         def runner(*args, **kwargs):
             result = func(*args, **kwargs)
+            # uploading
+            if 'USE_DECOTRA' in os.environ.keys() and not os.environ['USE_DECOTRA']:
+                return
+
             os.makedirs(decotra.saved_prefix, exist_ok=True)
 
             # saving
@@ -50,7 +54,6 @@ def track(bucket_name):
 
             filename = func.__name__ + '.npz' if type(result) is np.ndarray else func.__name__ + '.pkl'
 
-            # uploading
             __upload_to_s3(
                 bucket_prefix=bucket_name,
                 saved_prefix=decotra.saved_prefix,
