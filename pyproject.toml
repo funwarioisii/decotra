@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "decotra"
-version = "0.0.6"
+version = "0.6.1"
 description = ""
 authors = ["funwarioisii <mottirioisii@gmail.com>"]
 

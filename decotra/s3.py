@@ -41,7 +41,7 @@ def track(bucket_name):
             result = func(*args, **kwargs)
             # uploading
             if 'USE_DECOTRA' in os.environ.keys() and not os.environ['USE_DECOTRA']:
-                return
+                return result
 
             os.makedirs(decotra.saved_prefix, exist_ok=True)
 
