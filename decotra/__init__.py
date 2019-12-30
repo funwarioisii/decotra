@@ -9,7 +9,7 @@ def __o_add(num: int):
     return str(num) if num > 9 else f"0{num}"
 
 
-__version__ = "0.0.6-dev"
+__version__ = "0.6.1"
 
 __d = __dt.now()
 saved_prefix = f"{__o_add(__d.year)}-{__o_add(__d.month)}-{__o_add(__d.day)}-{__o_add(__d.hour)}-{__o_add(__d.minute)}/"
