@@ -1,2 +1,9 @@
+init:
+	poetry install
+
+build:
+	poetry build
+
 test:
-	pytest
+	- pytest
+	- poetry check

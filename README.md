@@ -75,6 +75,9 @@ if __name__ == '__main__':
 ```
 
 ## for developer
+<details>
+
+<summary>requirements and how to develop</summary>
 
 ### requirements
 - S3 environment
@@ -95,6 +98,11 @@ I only check this module working well with running `example/example.py`.
 ### publish
 Now, I run `poetry publish` manually.
 I'll set up GitHub Actions and automate to publish by push or merge to master branch.
+
+### other
+Some commands are written on `Makefile` (for my memorandum). 
+
+</details>
 
 ## tips
 ### Q. In debugging, i don't want to upload files and to change own codes. 
