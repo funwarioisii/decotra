@@ -74,6 +74,28 @@ if __name__ == '__main__':
     main()
 ```
 
+## for developer
+
+### requirements
+- S3 environment
+- [poetry](https://github.com/python-poetry/poetry)
+
+I don't have open s3 sandbox.
+Please prepare S3 environment.
+I use [minio](https://min.io) for developing and testing.
+
+### build
+Run `poetry build`, you'll pack decotra.
+
+### testing
+Sorry, Work In Progress. If you have nice testing idea, please Pull Requests.
+
+I only check this module working well with running `example/example.py`.
+
+### publish
+Now, I run `poetry publish` manually.
+I'll set up GitHub Actions and automate to publish by push or merge to master branch.
+
 ## tips
 ### Q. In debugging, i don't want to upload files and to change own codes. 
 __A.__ Set `USE_DECOTRA=-1`.
