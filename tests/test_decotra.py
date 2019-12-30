@@ -1,5 +1,7 @@
-from decotra import __version__
+import decotra
+import toml
 
 
 def test_version():
-    assert __version__ == '0.1.0'
+    dict_toml = toml.load(open('pyproject.toml'))
+    assert dict_toml['tool']['poetry']['version'] == decotra.__version__
