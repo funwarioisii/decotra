@@ -1,10 +1,10 @@
 # decotra
 
-Save a intermediate product and upload to S3.
+This tool saves intermediate objects such as models files in machine learning project s and upload them to S3.
 
-`Decotra`'s main feature is concreted with decorator, so it is easy to code and to remove.
+The main features of `Decotra` is provided with Python decorator, and therefore we can easy to add them to the codes and remove them.
 
-In my use case, tracking many results of functions on server and upload to S3 (I use minio), analyzing the calculation process ad-hoc.
+We can apply this tool for tracking results of functions on a server and analyzing the calculation process iteratively.
 
 ## Requirements
 
@@ -16,9 +16,9 @@ In my use case, tracking many results of functions on server and upload to S3 (I
 $ pip install decotra
 ```
 
-and if you use local s3 server (like a minio), please set a environmental parameters `S3_ENDPOINT_URL`.
+When you use local s3 server (such as a minio), please set a environmental parameters `S3_ENDPOINT_URL`.
 
-Example.
+The following is an example.
 
 `export S3_ENDPOINT_URL=http://s3.foo.co`
 
@@ -36,8 +36,8 @@ add(1, 2)
 
 ## Basic Usage
 
-When uploading file, decotra refers to decotra.saved_prefix.
-`with decotra.path` will help you to treat save_prefix.
+When uploading file, decotra refers to `decotra.saved_prefix`.
+`with decotra.path` will help you to treat `saved_prefix`.
 
 ```python
 import numpy as np
@@ -74,21 +74,22 @@ if __name__ == '__main__':
     main()
 ```
 
-## for developer
+## For developer
 <details>
 
 <summary>requirements and how to develop</summary>
 
 ### requirements
+
 - S3 environment
 - [poetry](https://github.com/python-poetry/poetry)
 
-I don't have open s3 sandbox.
-Please prepare S3 environment.
-I use [minio](https://min.io) for developing and testing.
+When you do not have open s3 sandbox, please prepare S3 environment.
+For example one member of decotra develper uses [minio](https://min.io) for developing and testing.
 
 ### build
-Run `poetry build`, you'll pack decotra.
+
+Run `poetry build` packs decotra.
 
 ### testing
 Checking only two points.
@@ -109,15 +110,17 @@ Through the two step.
 Only run `make test` 
 
 ### publish
-Now, I run `poetry publish` manually.
-I'll set up GitHub Actions and automate to publish by push or merge to master branch.
+
+Run `poetry publish` manually. We set up GitHub Actions and automate to publish by push or merge to master branch.
 
 ### other
+
 Some commands are written on `Makefile` (for my memorandum). 
 
 </details>
 
-## tips
+## Tips
+
 ### Q. In debugging, i don't want to upload files and to change own codes. 
 __A.__ Set `USE_DECOTRA=-1`.
 
