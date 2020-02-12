@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  minio:
+    image: minio/minio
+    ports:
+      - "9999:9000"
+    environment:
+      MINIO_ACCESS_KEY: accesstoken
+      MINIO_SECRET_KEY: seacretkey
+    command: minio server /data/minio/
+  createbuckets:
+    image: minio/mc
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      until (/usr/bin/mc config host add myminio http://minio:9000 accesstoken seacretkey) do echo '...waiting...' && sleep 1; done;
+      /usr/bin/mc mb myminio/bucket-name;
+      /usr/bin/mc policy download myminio/bucket-name;
+      exit 0;
+      "

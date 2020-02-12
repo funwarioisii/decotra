@@ -91,9 +91,22 @@ I use [minio](https://min.io) for developing and testing.
 Run `poetry build`, you'll pack decotra.
 
 ### testing
-Sorry, Work In Progress. If you have nice testing idea, please Pull Requests.
+Checking only two points.
+1. working well after changing
+2. check version
 
-I only check this module working well with running `example/example.py`.
+#### test 1
+Through the two step.
+
+1. `make prepare-s3-server`
+2. `make integration-test`
+
+1st, wake S3 server(minio) up and wait a minute.
+2nd, run the sample code.
+
+
+#### test 2
+Only run `make test` 
 
 ### publish
 Now, I run `poetry publish` manually.

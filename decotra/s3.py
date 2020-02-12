@@ -18,7 +18,7 @@ def path(saved_prefix):
 
 
 def __upload_to_s3(
-        bucket_prefix,
+        bucket_name,
         saved_prefix,
         upload_to_prefix,
         filename):
@@ -30,7 +30,7 @@ def __upload_to_s3(
         config=Config(signature_version='s3v4'),
         region_name='us-east-1'
     )
-    bucket = s3.Bucket(bucket_prefix)
+    bucket = s3.Bucket(bucket_name)
     bucket.upload_file(f'{saved_prefix}{filename}', f'{upload_to_prefix}{filename}')
     return
 
@@ -55,7 +55,7 @@ def track(bucket_name):
             filename = func.__name__ + '.npz' if type(result) is np.ndarray else func.__name__ + '.pkl'
 
             __upload_to_s3(
-                bucket_prefix=bucket_name,
+                bucket_name=bucket_name,
                 saved_prefix=decotra.saved_prefix,
                 upload_to_prefix=decotra.saved_prefix,
                 filename=filename

@@ -23,7 +23,8 @@ class Operation:
 def main():
     op = Operation()
 
-    for e in range(500):
+    epoch = 20
+    for e in range(epoch):
         with decotra.path(f"{decotra.saved_prefix}{e}/"):
             op.tanh(op.add(op.mul(1, 2), 3))
 
